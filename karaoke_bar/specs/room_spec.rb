@@ -70,4 +70,10 @@ class TestRoom < MiniTest::Test
     @room.add_song(@another_song)
     assert_equal(@another_song, @room.next_song())
   end
+
+  def test_remove_song
+    @room.add_song(@song)
+    @room.add_song(@another_song)
+    assert_equal(@song, @room.remove_song(@song))
+  end
 end
