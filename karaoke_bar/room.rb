@@ -41,4 +41,13 @@ class Room
     @songs.delete(song)
    end
 
+   def choose_song(song)
+    if @songs.include?(song)
+      # @current_song == song
+      # return @current_song
+    else
+    "Sorry, we don't have that song"
+    end
+   end
+
 end

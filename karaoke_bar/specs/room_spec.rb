@@ -45,6 +45,11 @@ class TestRoom < MiniTest::Test
     assert_equal(true, @room.search_for_guest(@guest))
   end
 
+  def add_two_songs
+    @room.add_song(@song)
+    @room.add_song(@another_song)
+  end
+
   def test_room_check_out_guest
     @room.check_in(@guest)
     @room.check_in(@another_guest)
@@ -60,20 +65,29 @@ class TestRoom < MiniTest::Test
   end
 
   def test_room_current_song_not_empty
-    @room.add_song(@song)
-    @room.add_song(@another_song)
+    add_two_songs()
     assert_equal(@song, @room.current_song)
   end
 
   def test_room_next_song
-    @room.add_song(@song)
-    @room.add_song(@another_song)
+    add_two_songs()
     assert_equal(@another_song, @room.next_song())
   end
 
   def test_remove_song
-    @room.add_song(@song)
-    @room.add_song(@another_song)
+    add_two_songs()
     assert_equal(@song, @room.remove_song(@song))
   end
+
+  def test_choose_song_and_not_found
+    @room.add_song(@song)
+    @room.choose_song(@another_song)
+    assert_equal("Sorry, we don't have that song", @room.choose_song(@another_song))
+  end
+
+  # def test_choose_song_and_found
+  #   add_two_songs()
+  #   @room.choose_song(@another_song)
+  #   assert_equal(@another_song, @room.current_song)
+  # end
 end
