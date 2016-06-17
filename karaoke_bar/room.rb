@@ -4,9 +4,9 @@ class Room
   def initialize(params)
      @name = params[:name]
      @price = params[:price]
+     @capacity = params[:capacity]
      @songs = []
      @guests = []
-     @capacity = 100
    end
 
    def add_song(song)
@@ -21,9 +21,9 @@ class Room
     @guests.include?(guest)
    end
 
-   # def check_out(guest)
-   #  @guests.delete(guest)
-   # end
+   def check_out(guest)
+    @guests.delete(guest)
+   end
 
 
 end
