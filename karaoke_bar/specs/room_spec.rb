@@ -14,7 +14,11 @@ class TestRoom < MiniTest::Test
     assert_equal(20, @room.price)
   end
 
-  def test_room_has_empty_song_array
+  def test_room_has_empty_songs_array
     assert_equal([], @room.songs)
+  end
+
+  def test_room_has_empty_guests_array
+    assert_equal([], @room.guests)
   end
 end
