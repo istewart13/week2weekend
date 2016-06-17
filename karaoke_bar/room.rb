@@ -22,7 +22,7 @@ class Room
    end
 
    def check_in(guest)
-    if @current_guest_nums <= @capacity
+    if @current_guest_nums < @capacity
       @guests << guest
       @current_guest_nums += 1
       return @guests.last

@@ -8,6 +8,7 @@ class TestRoom < MiniTest::Test
     @room = Room.new(name: "Pop", price: 20, capacity: 2)
     @guest = Guest.new(first_name: "John", last_name: "Smith", age: 26, money: 100)
     @another_guest = Guest.new(first_name: "Mary", last_name: "Smyth", age: 32, money: 200)
+    @third_guest = Guest.new(first_name: "Tommy", last_name: "Smith", age: 48, money: 400)
     @song = Song.new(title: "Like A Prayer", artist: "Madonna", genre: "Pop")
     @another_song = Song.new(title: "Born To Run", artist: "Bruce Springsteen", genre: "Rock")
   end
@@ -37,14 +38,15 @@ class TestRoom < MiniTest::Test
     assert_equal(1, @room.current_guest_nums)
   end
 
-  # def test_current_guest_nums_under_capacity
-  #   # assert_equal(100, @room.capacity)
-  # end
+  def test_current_guest_nums_under_capacity
+    assert_equal(@guest, @room.check_in(@guest))
+  end
 
-  # def test_current_guest_nums_over_capacity
-  #   @room.check_in(@guest)
-  #   assert_equal("We're over capacity, you can't come in", @room.check_in(@another_guest))
-  # end
+  def test_current_guest_nums_over_capacity
+    @room.check_in(@guest)
+    @room.check_in(@another_guest)
+    assert_equal("We're over capacity, you can't come in", @room.check_in(@third_guest))
+  end
 
   def test_room_add_song
     assert_equal(@song, @room.add_song(@song))
