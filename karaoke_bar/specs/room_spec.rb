@@ -81,13 +81,17 @@ class TestRoom < MiniTest::Test
 
   def test_choose_song_and_not_found
     @room.add_song(@song)
-    @room.choose_song(@another_song)
     assert_equal("Sorry, we don't have that song", @room.choose_song(@another_song))
+  end
+
+  def test_choose_song_and_found
+    add_two_songs()
+    assert_equal(@another_song, @room.choose_song(@another_song))
   end
 
   # def test_choose_song_and_found
   #   add_two_songs()
   #   @room.choose_song(@another_song)
-  #   assert_equal(@another_song, @room.current_song)
+  #   assert_equal(@another_song, @room.choose_song())
   # end
 end

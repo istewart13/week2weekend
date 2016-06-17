@@ -43,8 +43,7 @@ class Room
 
    def choose_song(song)
     if @songs.include?(song)
-      # @current_song == song
-      # return @current_song
+      @current_song = song
     else
     "Sorry, we don't have that song"
     end
