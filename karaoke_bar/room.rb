@@ -1,10 +1,11 @@
 class Room
-  attr_reader :name, :price, :songs, :guests, :capacity, :current_song
+  attr_reader :name, :price, :songs, :guests, :capacity, :current_song, :current_guest_nums
 
   def initialize(params)
      @name = params[:name]
      @price = params[:price]
      @capacity = params[:capacity]
+     @current_guest_nums = 0
      @songs = []
      @guests = []
      @current_song = @songs[0]
@@ -21,7 +22,13 @@ class Room
    end
 
    def check_in(guest)
-    @guests << guest
+    if @current_guest_nums <= @capacity
+      @guests << guest
+      @current_guest_nums += 1
+      return @guests.last
+    else
+      return "We're over capacity, you can't come in"
+    end
    end
 
    def search_for_guest(guest)
@@ -48,5 +55,9 @@ class Room
     "Sorry, we don't have that song"
     end
    end
+
+   # def no_spare_capacity()
+
+   # end
 
 end
