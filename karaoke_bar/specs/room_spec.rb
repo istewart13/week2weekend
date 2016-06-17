@@ -26,11 +26,20 @@ class TestRoom < MiniTest::Test
     assert_equal([], @room.guests)
   end
 
-  def test_room_holds_song
+  def test_room_add_song
     assert_equal([@song], @room.add_song(@song))
   end
 
-  def test_room_holds_guest
+  def test_room_check_in_guest
     assert_equal([@guest], @room.check_in(@guest))
   end
+
+  def test_room_search_for_guest
+    @room.check_in(@guest)
+    assert_equal(true, @room.search_for_guest(@guest))
+  end
+
+  # def test_room_check_out_guest
+  #   assert_equal(nil, @room.check_out(@guest))
+  # end
 end
