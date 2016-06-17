@@ -9,6 +9,7 @@ class TestRoom < MiniTest::Test
     @guest = Guest.new(first_name: "John", last_name: "Smith", age: 26, money: 100)
     @another_guest = Guest.new(first_name: "Mary", last_name: "Smyth", age: 32, money: 200)
     @song = Song.new(title: "Like A Prayer", artist: "Madonna", genre: "Pop")
+    @another_song = Song.new(title: "Born To Run", artist: "Bruce Springsteen", genre: "Rock")
   end
 
   def test_room_has_name
@@ -50,4 +51,12 @@ class TestRoom < MiniTest::Test
     assert_equal(@guest, @room.check_out(@guest))
   end
 
+  def test_room_current_song_empty
+    assert_equal(nil, @room.current_song)
+  end
+
+  # def test_room_next_song
+  #   @room.next_song(@song)
+  #   assert_equal(@guest, @room.check_out(@guest))
+  # end
 end

@@ -1,5 +1,5 @@
 class Room
-  attr_reader :name, :price, :songs, :guests, :capacity
+  attr_reader :name, :price, :songs, :guests, :capacity, :current_song
 
   def initialize(params)
      @name = params[:name]
@@ -7,6 +7,7 @@ class Room
      @capacity = params[:capacity]
      @songs = []
      @guests = []
+     @current_song = @songs[0]
    end
 
    def add_song(song)
