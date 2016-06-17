@@ -11,7 +11,13 @@ class Room
    end
 
    def add_song(song)
-    @songs << song
+    if @songs.length == 0
+      @songs << song
+      @current_song = song
+      return song
+    elsif @songs.length > 50
+      return "Sorry, your playlist is full"
+    end
    end
 
    def check_in(guest)

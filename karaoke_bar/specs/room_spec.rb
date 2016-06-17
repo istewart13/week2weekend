@@ -33,7 +33,7 @@ class TestRoom < MiniTest::Test
   end
 
   def test_room_add_song
-    assert_equal([@song], @room.add_song(@song))
+    assert_equal(@song, @room.add_song(@song))
   end
 
   def test_room_check_in_guest
@@ -53,6 +53,11 @@ class TestRoom < MiniTest::Test
 
   def test_room_current_song_empty
     assert_equal(nil, @room.current_song)
+  end
+
+  def test_room_current_song_not_empty
+    @room.add_song(@song)
+    assert_equal(@song, @room.current_song)
   end
 
   # def test_room_next_song
