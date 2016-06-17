@@ -11,13 +11,13 @@ class Room
    end
 
    def add_song(song)
-    if @songs.length == 0
-      @songs << song
-      @current_song = song
-      return song
-    elsif @songs.length > 50
-      return "Sorry, your playlist is full"
-    end
+    @songs << song
+    set_initial_song() if @songs.length == 1
+    return song
+   end
+
+   def set_initial_song()
+    @current_song = @songs[0]
    end
 
    def check_in(guest)
@@ -31,6 +31,10 @@ class Room
    def check_out(guest)
     @guests.delete(guest)
    end
+
+   # def next_song()
+   #  @current_song = @songs.rotate![0]
+   # end
 
 
 end
