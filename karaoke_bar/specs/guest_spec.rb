@@ -10,4 +10,8 @@ class TestGuest < MiniTest::Test
   def test_guest_has_first_name
     assert_equal("John", @guest.first_name)
   end
+
+  def test_guest_has_last_name
+    assert_equal("Smith", @guest.last_name)
+  end
 end
