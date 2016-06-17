@@ -17,6 +17,7 @@ class Room
    end
 
    def set_initial_song()
+    #update this to update song and use conditional
     @current_song = @songs[0]
    end
 
@@ -32,9 +33,9 @@ class Room
     @guests.delete(guest)
    end
 
-   # def next_song()
-   #  @current_song = @songs.rotate![0]
-   # end
+   def next_song()
+    @current_song = @songs.rotate![0]
+   end
 
 
 end
