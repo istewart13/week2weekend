@@ -9,6 +9,7 @@ class Room
      @songs = []
      @guests = []
      @current_song = @songs[0]
+     @drinks = {beer: 5, cider: 5, vodka: 10}
    end
 
    def add_song(song)
@@ -68,5 +69,9 @@ class Room
       confirm_favourite_song = "WHOOOO, I love this song" if guest.favourite_song == @current_song.title
     end
     confirm_favourite_song
+   end
+
+   def buy_drink(guest, drink)
+    guest.money -= @drinks[drink]
    end
 end

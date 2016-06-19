@@ -120,4 +120,9 @@ class TestRoom < MiniTest::Test
     @room.add_song(@song)
     assert_equal("", @room.favourite_song_on)
   end
+
+  def test_guest_can_buy_a_drink
+    @room.check_in(@guest)
+    assert_equal(75, @room.buy_drink(@guest, :cider))
+  end
 end
