@@ -114,4 +114,10 @@ class TestRoom < MiniTest::Test
     @room.add_song(@song)
     assert_equal("WHOOOO, I love this song", @room.favourite_song_on)
   end
+
+  def test_guest_favourite_song_is_on
+    @room.check_in(@another_guest)
+    @room.add_song(@song)
+    assert_equal("", @room.favourite_song_on)
+  end
 end
