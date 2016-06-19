@@ -55,10 +55,18 @@ class Room
 
    def choose_song(song)
     if @songs.include?(song)
+      favourite_song_on
       @current_song = song
     else
     "Sorry, we don't have that song"
     end
    end
 
+   def favourite_song_on
+    confirm_favourite_song = ""
+    @guests.each do |guest|
+      confirm_favourite_song = "WHOOOO, I love this song" if guest.favourite_song == @current_song.title
+    end
+    confirm_favourite_song
+   end
 end

@@ -108,4 +108,10 @@ class TestRoom < MiniTest::Test
     add_two_songs()
     assert_equal(@another_song, @room.choose_song(@another_song))
   end
+
+  def test_guest_favourite_song_is_on
+    @room.check_in(@guest)
+    @room.add_song(@song)
+    assert_equal("WHOOOO, I love this song", @room.favourite_song_on)
+  end
 end
