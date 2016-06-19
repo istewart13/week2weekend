@@ -24,11 +24,16 @@ class Room
    def check_in(guest)
     if @current_guest_nums < @capacity
       @guests << guest
+      charge_guest(guest)
       @current_guest_nums += 1
       return @guests.last
     else
       return "We're over capacity, you can't come in"
     end
+   end
+
+   def charge_guest(guest)
+    guest.money -= @price
    end
 
    def search_for_guest(guest)
@@ -55,9 +60,5 @@ class Room
     "Sorry, we don't have that song"
     end
    end
-
-   # def no_spare_capacity()
-
-   # end
 
 end

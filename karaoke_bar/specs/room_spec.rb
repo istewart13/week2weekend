@@ -56,6 +56,10 @@ class TestRoom < MiniTest::Test
     assert_equal(@guest, @room.check_in(@guest))
   end
 
+  def test_room_guests_charged_at_check_in
+    assert_equal(80, @room.charge_guest(@guest))
+  end
+
   def test_room_search_for_guest
     @room.check_in(@guest)
     assert_equal(true, @room.search_for_guest(@guest))
